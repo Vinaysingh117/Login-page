@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page - Student Access</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .left-section {
+            flex: 1;
+            background: linear-gradient(to bottom right, #4f46e5, #7c3aed);
+            padding: 50px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .right-section {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo i {
+            font-size: 32px;
+            margin-right: 10px;
+            color: #4f46e5;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+        
+        .welcome-text {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+        
+        .subtext {
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .remember {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .forgot-link {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 15px rgba(79, 70, 229, 0.3);
+        }
+        
+        .signup-link {
+            text-align: center;
+            color: #6b7280;
+        }
+        
+        .signup-link a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .left-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .left-description {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .features {
+            list-style: none;
+        }
+        
+        .features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .features i {
+            margin-right: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px;
+            border-radius: 50%;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f4f6;
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: #4f46e5;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .left-section, .right-section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <h1 class="left-title">Student Portal</h1>
+            <p class="left-description">
+                Polytechnic graduates - Start your coding journey with us. 
+                Access learning resources, projects, and career guidance.
+            </p>
+            <ul class="features">
+                <li><i class="fas fa-graduation-cap"></i> Free Coding Courses</li>
+                <li><i class="fas fa-project-diagram"></i> Real-World Projects</li>
+                <li><i class="fas fa-laptop-code"></i> Hands-on Practice</li>
+                <li><i class="fas fa-briefcase"></i> Job Assistance</li>
+            </ul>
+        </div>
+        
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span class="logo-text">CodePoly</span>
+            </div>
+            
+            <h2 class="welcome-text">Welcome Back!</h2>
+            <p class="subtext">Sign in to continue your learning journey</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="student@example.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="remember">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+                
+                <div class="signup-link">
+                    New here? <a href="#">Create an account</a>
+                </div>
+                
+                <div class="social-login">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if(email && password) {
+                alert(`Welcome back! Login successful.\nEmail: ${email}`);
+                // In real app, you would send data to server here
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+    </script>
+</body>
+</html>
